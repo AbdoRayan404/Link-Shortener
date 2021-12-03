@@ -30,8 +30,8 @@ router.post('/api/users/register', (req,res) =>{
     }
 
     ///create new user object///
-    users[req.body.username] = {
-        "password": req.body.username,
+    users[`${req.body.username}`] = {
+        "password": req.body.password,
         "links": {
 
         }
@@ -49,11 +49,11 @@ router.post('/api/users/', (req,res) =>{
         res.status(400).send('Wrong credentials.')
         return
     }
-
+    
     ///data-check///
-    if (dataCheck(req.body.username,req.body.password)){
-        res.status(400).send('Wrong credentials.')
-        return
+    if (CredCheck(req.body.username,req.body.password) == false){
+        res.status(400).send('password/username is wrong')
+        return 
     }
 
 
@@ -71,8 +71,12 @@ router.post('/api/users/links', (req,res) =>{
     }
 
     ///data-check///
-    if (dataCheck(req.body.username, req.body.password, req.body.linkName)){
-        res.status(400).send('Wrong credentials.')
+    if (CredCheck(req.body.username,req.body.password) == false){
+        res.status(400).send('password/username is wrong')
+        return 
+    }
+    if (linkCheck(req.body.linkName) == true){ 
+        res.status(400).send('this link name already used.')
         return
     }
 
@@ -92,8 +96,16 @@ router.delete('/api/users/links', (req,res) =>{
     }
 
     ///data-check///
-    if (dataCheck(req.body.username,req.body.password,req.body.linkName,2)){
-        res.status(400).send('Wrong credentials.')
+    if (CredCheck(req.body.username,req.body.password) == false){
+        res.status(400).send('password/username is wrong')
+        return
+    }
+    if (linkCheck(req.body.linkName) == false){
+        res.status(400).send('link Name doesn\t exist.')
+        return
+    }
+    if (!users[req.body.username]["links"].hasOwnProperty(req.body.linkName)){
+        res.status(400).send('this link doesn\t belon to you')
         return
     }
 
@@ -117,38 +129,24 @@ const inputCheck = (username,password) =>{
     return null
 }
 
-const dataCheck = (username,password,linkName, x = 1) =>{
-    if(linkName && x == 1){
-        if(!users.hasOwnProperty(username)){
-            return ('Wrong credentials.1')
-        }
-        if(users[username]["password"] !== password){
-            return ('Wrong credentials.2')
-        }
-        if(links.hasOwnProperty(linkName)){
-            return ('this link does exist')
-        }
-    }else if(linkName && x != 1){
-        if(!users.hasOwnProperty(username)){
-            return ('Wrong credentials.1')
-        }
-        if(users[username]["password"] !== password){
-            return ('Wrong credentials.2')
-        }
-        if(!links.hasOwnProperty(linkName)){
-            return ('this link doesn\'t exist')
-        }
+
+const CredCheck = (username,password) =>{
+    if(!users.hasOwnProperty(username)){
+        return false
     }
-    else{
-        if(!users.hasOwnProperty(username)){
-            return ('Wrong credentials.')
-        }
-        if(users[username]["password"] !== password){
-            return ('Wrong credentials.')
-        }
+    if(users[username]["password"] != password){
+        return false
     }
 
-    return null
+    return true
+}
+
+const linkCheck = (linkName) =>{
+    if(links.hasOwnProperty(linkName)){
+        return true
+    }else{
+        return false
+    }
 }
 
 
