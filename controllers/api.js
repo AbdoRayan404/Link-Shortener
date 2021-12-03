@@ -116,9 +116,6 @@ router.delete('/api/users/links', (req,res) =>{
 })
 
 const inputCheck = (username,password) =>{
-    if(typeof username !== "string"){
-        return 'Wrong credentials.'
-    }
     if(username.length < 5 || username.length > 16){
         return 'Wrong credentials.'
     }
