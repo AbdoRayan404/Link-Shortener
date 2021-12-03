@@ -5,17 +5,30 @@
         <link rel="stylesheet" href="/index.css">
     </head>
     <body>
-        <h1 class="welcome"><%= welcome %></h1>
-        <a href="/shorten/test" class="welcome"><%= tryit %></a>
         <div class="container">
-            <form action="/api/query" method="get">
-                <label>Link name: (3 chars or more)</label><br>
-                <input type="input" id="linkName" name="linkName"><br>
-                <label>Link to shorten: (https://example.com)</label><br>
-                <input type="input" id="link" name="link"><br>
+            <h1 class="welcome"><%= welcome %></h1>
 
-                <input type="submit" value="submit">
-            </form>
+            <h4>Login:</h4>
+            <label>username:</label><br>
+            <input type="input" class="username"><br>
+            <label>password:</label><br>
+            <input type="input" class="password"><br>
+            <input type="submit" class="login">
+
+            <h4>Register:</h4>
+            <label>username: (5-16 characters)</label><br>
+            <input type="input" class="RegisterUsername"><br>
+            <label>password: (8-16 characters)</label><br>
+            <input type="input" class="RegisterPassword"><br>
+            <input type="submit" class="register">
+
         </div>
+
+        <form method="GET" action="/logged" class="hidden">
+            <input type="hidden" name="username" id="username" class="hiddenUsername">
+            <input type="hidden" name="password" id="password" class="hiddenPassword">
+        </form>
+
+        <script src="/index.js"></script>
     </body>
 </html>

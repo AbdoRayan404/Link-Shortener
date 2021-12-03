@@ -17,10 +17,14 @@ app.use(express.json());
 
 //route
 app.get('/', route);
+app.get('/logged', route);
 app.get('/shorten/:name', route);
 
 //api
-app.all('/api/query', api);
+app.post('/api/users/register', api); //CREATE-ACCOUNT
+app.post('/api/users/', api); //READ
+app.post('/api/users/links', api); //CREATE-LINK
+app.delete('/api/users/links', api); //DELETE-LINK
 
 
 app.listen(port, () => console.log(`App is running on port:${port}`));

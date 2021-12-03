@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Landing Page</title>
+        <link rel="stylesheet" href="/index.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="welcome">Welcome <%= username %> to link-shortner, where you can rick roll Easily.</h1>
+            <a href="/shorten/test" class="welcome">try it</a>
+
+            <h4>Create new shorten-link:</h4>
+            <label>Link Name:</label><br>
+            <input type="input" class="linkName"><br>
+            <label>Link:</label><br>
+            <input type="input" class="link"><br>
+            <input type="submit" value="create" class="create">
+
+        </div>
+
+        <span hidden class="username"><%= username %></span>
+        <span hidden class="password"><%= password %></span>
+    </body>
+    <script src="/logged.js"></script>
+</html>
