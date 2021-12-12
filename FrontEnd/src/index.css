@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.Container {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.User-Div {
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  text-align: center;
+}
+
+.Links-List {
+  width: 400px;
+}
+
+.Link-Row {
+  width: 400px;
+}
+.LinkName {
+  float: left;
+}
+.Delete {
+  float: right;
+}
