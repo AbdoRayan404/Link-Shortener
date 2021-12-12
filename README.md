@@ -1,5 +1,6 @@
 <h1 align="center">Link Shortener</h1>
 <p align="center">Link Shortener project that let users create shorten links and redirects to it.</p>
+
 Try it [here](https://link-shortener-404.herokuapp.com/login)
 
 # Tech Used:
