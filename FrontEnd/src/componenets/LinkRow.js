@@ -5,7 +5,7 @@ const LinkRow = (props) => {
     const navigate = useNavigate();
 
     const deleteLink = () => {
-        fetch('http://127.0.0.1:5000/api/users/links', {
+        fetch('https://link-shortener-api-404.herokuapp.com/api/users/links', {
             method: 'DELETE',
             headers: {
                 'x-access-token': localStorage.getItem("token"),

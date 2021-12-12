@@ -7,7 +7,7 @@ const CreateLink = () => {
     let navigate = useNavigate()
 
     const createLink = () =>{
-        fetch('http://127.0.0.1:5000/api/users/links', {
+        fetch('https://link-shortener-api-404.herokuapp.com/api/users/links', {
             method: "POST",
             headers:{
                 "x-access-token": localStorage.getItem("token"),

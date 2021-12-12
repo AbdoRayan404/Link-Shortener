@@ -15,7 +15,7 @@ function User() {
 
         //check if token exist, then sends GET API to the back-end
         if(token){
-            fetch('http://127.0.0.1:5000/api/users/', {
+            fetch('https://link-shortener-api-404.herokuapp.com/api/users/', {
                 method: "GET",
                 headers: {
                     "x-access-token": token
