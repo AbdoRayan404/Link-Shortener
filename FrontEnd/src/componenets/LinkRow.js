@@ -28,7 +28,7 @@ const LinkRow = (props) => {
     return (
         <div className="Link-Row">
             <label className="LinkName">{props.linkName}</label>
-            <a className="Link" href={props.link}>{props.link}</a>
+            <a className="Link" href={`https://link-shortener-api-404.herokuapp.com/shorten/${props.linkName}`}>{props.link}</a>
             <button className="Delete" onClick={deleteLink}>Delete</button>
         </div>
     )
