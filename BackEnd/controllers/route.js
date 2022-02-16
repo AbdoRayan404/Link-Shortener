@@ -10,7 +10,10 @@ router.get('/:name', (req,res) =>{
         return
     }
 
-    res.redirect(links[req.params.name])
+    res.redirect(links[req.params.name]["link"]);
+
+    links[req.params.name]["clicks"] += 1;
+    users[links[req.params.name]["owner"]]["links"][req.params.name]["clicks"] += 1;
 })
 
 module.exports = router;

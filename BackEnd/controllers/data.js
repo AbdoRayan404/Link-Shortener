@@ -3,15 +3,16 @@
 //INFO: username: {password, links: {link}}
 
 const links = {
-    "test": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    "Rick": "https://youtu.be/dQw4w9WgXcQ"
+    "test": {"link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ","clicks": 0, "owner": "Terry-404"}, //link, clicks
+    "Rick": {"link": "https://youtu.be/dQw4w9WgXcQ","clicks": 0, "owner": "Terry-404"}
 }
 
 const users = {
     "Terry-404" : {
         "password" : "Terry-404",
         "links": {
-            "Rick": "https://youtu.be/dQw4w9WgXcQ"
+            "Rick": {"link": "https://youtu.be/dQw4w9WgXcQ","clicks": 0},
+            "test": {"link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", "clicks": 0}
         }
     }
 }

@@ -74,7 +74,10 @@ router.get('/api/users/', verifyToken, (req,res) =>{
 
 
     //response
-    res.status(200).send({"username": req.user.username, "links": users[req.user.username]["links"]})
+    res.status(200).send(
+        {"username": req.user.username,
+        "links": users[req.user.username]["links"]}
+        )
 })
 
 //POST API (Create-Link)
@@ -97,8 +100,8 @@ router.post('/api/users/links', verifyToken, (req,res) =>{
     }
 
     //response
-    links[req.body.linkName] = req.body.link;
-    users[req.user.username]["links"][req.body.linkName] = req.body.link
+    links[req.body.linkName] = {"link": req.body.link, "clicks": 0, "owner": req.user.username};
+    users[req.user.username]["links"][req.body.linkName] = {"link": req.body.link, "clicks": 0};
     res.status(200).send(users[req.user.username]["links"])
 })
 
@@ -170,11 +173,12 @@ router.patch('/api/users/links', verifyToken, (req,res) =>{
     }
 
     //response
+    let clicks = links[oldLink]["clicks"];
     delete links[oldLink]
-    links[newObj.linkName] = newObj.link
+    links[newObj.linkName] = {"link": newObj.link, "clicks" : clicks, "owner": username};
 
     delete users[req.user.username]["links"][oldLink]
-    users[req.user.username]["links"][newObj.linkName] = newObj.link
+    users[req.user.username]["links"][newObj.linkName] = {"link": newObj.link, "clicks": clicks}
     res.status(200).send(users[req.user.username]["links"])
 })
 

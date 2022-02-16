@@ -25,28 +25,28 @@ Content-Type: application/json
 x-access-token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlcnJ5LTQwNCIsInBhc3N3b3JkIjoiVGVycnktNDA0IiwiaWF0IjoxNjQ1MDQzNzQyfQ.4Avw5D86w5q8weYLlQhfUwSh4tpSVc7rrC7A7OMUNk8
 
 {
-    "linkName": "testoqqo",
+    "linkName": "test1",
     "link": "https://example.com"
 }
 
 ###
 DELETE http://127.0.0.1:5000/api/users/links
 Content-Type: application/json
-x-access-token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlcnJ5LTQwNCIsInBhc3N3b3JkIjoiVGVycnktNDA0IiwiaWF0IjoxNjM4NzA0ODA1fQ.OX0bhUM0b_S_UkvzXSKN6jfhhTqkhtFtmsTZdv7VqoU
+x-access-token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlcnJ5LTQwNCIsInBhc3N3b3JkIjoiVGVycnktNDA0IiwiaWF0IjoxNjQ1MDQzNzQyfQ.4Avw5D86w5q8weYLlQhfUwSh4tpSVc7rrC7A7OMUNk8
 
 {
-    "linkName": "testoo"
+    "linkName": "test1"
 }
 
 ###
 PATCH http://127.0.0.1:5000/api/users/links
 Content-Type: application/json
-x-access-token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlcnJ5LTQwNCIsInBhc3N3b3JkIjoiVGVycnktNDA0IiwiaWF0IjoxNjM4NzA0ODA1fQ.OX0bhUM0b_S_UkvzXSKN6jfhhTqkhtFtmsTZdv7VqoU
+x-access-token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlcnJ5LTQwNCIsInBhc3N3b3JkIjoiVGVycnktNDA0IiwiaWF0IjoxNjQ1MDQzNzQyfQ.4Avw5D86w5q8weYLlQhfUwSh4tpSVc7rrC7A7OMUNk8
 
 {
-    "linkName": "Rick",
+    "linkName": "test1",
     "linkObj": {
-        "linkName": "Rick-Roll",
+        "linkName": "Test-1",
         "link": "https://example.com"
         }
 }
