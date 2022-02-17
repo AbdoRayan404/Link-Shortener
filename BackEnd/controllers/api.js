@@ -1,6 +1,7 @@
 const express = require('express');
 const {links,users} = require('./data');
 const router = express.Router();
+const {log} = require('./middleware');
 
 //configuration
 router.use(express.json());
@@ -10,7 +11,7 @@ const {verifyToken, createToken} = require('./middleware');
 
 //POST API (Create account)
 //requires: String 5-16, String 5-16
-router.post('/api/users/register', (req,res) =>{
+router.post('/api/users/register', log, (req,res) =>{
     ///input-check///
     if (inputCheck(req.body.username, req.body.password)){
         res.status(400).send('Wrong credentials.')
@@ -40,7 +41,7 @@ router.post('/api/users/register', (req,res) =>{
 
 //POST API (AUTH-account)
 //requires: username/password
-router.post('/api/users/login', (req,res) =>{
+router.post('/api/users/login', log, (req,res) =>{
     ///input-check///
     if (inputCheck(req.body.username, req.body.password)){
         res.status(400).send('Wrong credentials.')
@@ -65,7 +66,7 @@ router.post('/api/users/login', (req,res) =>{
 
 //GET API (Read-account data)
 //requires: token
-router.get('/api/users/', verifyToken, (req,res) =>{
+router.get('/api/users/', verifyToken, log, (req,res) =>{
     ///data-check///
     if (CredCheck(req.user.username, req.user.password) == false){
         res.status(400).send('password/username is wrong')
@@ -82,7 +83,7 @@ router.get('/api/users/', verifyToken, (req,res) =>{
 
 //POST API (Create-Link)
 //requires: token/linkName/link
-router.post('/api/users/links', verifyToken, (req,res) =>{
+router.post('/api/users/links', verifyToken, log, (req,res) =>{
     //input-check//
     if (!req.body.hasOwnProperty("link")){
         res.status(400).send("you must provide link")
@@ -107,7 +108,7 @@ router.post('/api/users/links', verifyToken, (req,res) =>{
 
 //DELETE api (Delete)
 //requires: token/linkName
-router.delete('/api/users/links', verifyToken, (req,res) =>{
+router.delete('/api/users/links', verifyToken, log, (req,res) =>{
 
     ///data-check///
     if (CredCheck(req.user.username,req.user.password) == false){
@@ -132,7 +133,7 @@ router.delete('/api/users/links', verifyToken, (req,res) =>{
 
 //PATCH api (update)
 //requires: token/LinkName/newLinkData(Object)
-router.patch('/api/users/links', verifyToken, (req,res) =>{
+router.patch('/api/users/links', verifyToken, log, (req,res) =>{
     let username = req.user.username
     let password = req.user.password
     let oldLink = req.body.linkName

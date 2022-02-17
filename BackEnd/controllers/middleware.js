@@ -25,4 +25,12 @@ const createToken = (user) =>{
     return accessToken
 }
 
-module.exports = {verifyToken, createToken}
+const log = (req, res, next) =>{
+    let date = new Date();
+
+    console.log(`IP:${req.ip}, REQ-METHOD:${req.route.stack[0].method}, PATH:${req.path}, TIME:${date.getFullYear()}-${date.getMonth()}-${date.getDate()}:${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}, X-Access-Token:${req.headers["x-access-token"]}`);
+
+    next();
+}
+
+module.exports = {verifyToken, createToken, log}
